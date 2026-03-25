@@ -225,6 +225,14 @@ const App = () => {
     }
   };
 
+  const openCurrentExhibition = (e) => {
+    e.preventDefault();
+    const currentExhibition = exhibitions.find(ex => ex.statusKey === 'current');
+    if (currentExhibition) {
+      setSelectedExhibition(currentExhibition);
+    }
+  };
+
   const posterAspectClass = "aspect-[1/1.414]";
 
   return (
@@ -250,6 +258,31 @@ const App = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-neutral-100 px-4 pt-2 pb-6 space-y-1 shadow-lg">
+            <button 
+              onClick={() => { navigateToHome(); setIsMenuOpen(false); }} 
+              className={`block w-full text-left px-3 py-4 text-base font-medium rounded-md ${view === 'home' ? 'text-neutral-900 bg-neutral-50' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+            >
+              홈
+            </button>
+            <button 
+              onClick={() => { navigateToArchive(); setIsMenuOpen(false); }} 
+              className={`block w-full text-left px-3 py-4 text-base font-medium rounded-md ${view === 'archive' ? 'text-neutral-900 bg-neutral-50' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+            >
+              전시 목록
+            </button>
+            <a 
+              href="#visit" 
+              onClick={(e) => { navigateToVisit(e); setIsMenuOpen(false); }} 
+              className="block w-full text-left px-3 py-4 text-base font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-md"
+            >
+              관람 안내 및 오시는 길
+            </a>
+          </div>
+        )}
       </nav>
 
       {view === 'home' ? (
@@ -264,7 +297,7 @@ const App = () => {
                 <div className="text-2xl md:text-4xl font-bold">전주의 현대 공간.</div>
               </h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="#exhibitions" className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-neutral-900 hover:bg-neutral-800 transition-all shadow-xl">현재 전시 보기</a>
+                <button onClick={openCurrentExhibition} className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-neutral-900 hover:bg-neutral-800 transition-all shadow-xl">현재 전시 보기</button>
                 <button onClick={navigateToArchive} className="inline-flex justify-center items-center px-8 py-4 border border-neutral-300 text-base font-medium rounded-full text-neutral-700 bg-white hover:bg-neutral-50 transition-colors">전시 목록</button>
               </div>
             </div>
