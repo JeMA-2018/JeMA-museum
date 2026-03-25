@@ -205,6 +205,26 @@ const App = () => {
     scrollToTop();
   };
 
+  const navigateToVisit = (e) => {
+    e.preventDefault();
+    if (view !== 'home') {
+      setView('home');
+      setTimeout(() => {
+        const el = document.getElementById('visit');
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const el = document.getElementById('visit');
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  };
+
   const posterAspectClass = "aspect-[1/1.414]";
 
   return (
@@ -220,7 +240,7 @@ const App = () => {
             <div className="hidden md:flex space-x-8 items-center">
               <button onClick={navigateToHome} className={`hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base ${view === 'home' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500'}`}>홈</button>
               <button onClick={navigateToArchive} className={`hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base ${view === 'archive' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500'}`}>전시 목록</button>
-              <a href="#visit" className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base">관람 안내 및 오시는 길</a>
+              <a href="#visit" onClick={navigateToVisit} className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base">관람 안내 및 오시는 길</a>
             </div>
 
             <div className="md:hidden flex items-center">
