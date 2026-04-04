@@ -6,6 +6,14 @@ const App = () => {
   const [selectedExhibition, setSelectedExhibition] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [view, setView] = useState('home'); // 'home' or 'archive'
+  const [isSpaceModalOpen, setIsSpaceModalOpen] = useState(false);
+  const [currentSpaceImageIndex, setCurrentSpaceImageIndex] = useState(0);
+
+  const spaceImages = [
+    "https://picsum.photos/seed/jema1/800/600",
+    "https://picsum.photos/seed/jema2/800/600",
+    "https://picsum.photos/seed/jema3/800/600",
+  ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -193,6 +201,16 @@ const App = () => {
     setCurrentImageIndex((prev) => (prev - 1 + selectedExhibition.images.length) % selectedExhibition.images.length);
   };
 
+  const handleNextSpaceImage = (e) => {
+    e.stopPropagation();
+    setCurrentSpaceImageIndex((prev) => (prev + 1) % spaceImages.length);
+  };
+
+  const handlePrevSpaceImage = (e) => {
+    e.stopPropagation();
+    setCurrentSpaceImageIndex((prev) => (prev - 1 + spaceImages.length) % spaceImages.length);
+  };
+
   const scrollToTop = () => window.scrollTo(0, 0);
 
   const navigateToArchive = () => {
@@ -257,6 +275,7 @@ const App = () => {
             <div className="hidden md:flex space-x-8 items-center">
               <button onClick={navigateToHome} className={`hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base ${view === 'home' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500'}`}>홈</button>
               <button onClick={navigateToArchive} className={`hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base ${view === 'archive' ? 'text-neutral-900 border-b-2 border-neutral-900' : 'text-neutral-500'}`}>전시 목록</button>
+              <button onClick={() => setIsSpaceModalOpen(true)} className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base">전시실 내부</button>
               <a href="#visit" onClick={navigateToVisit} className="text-neutral-500 hover:text-neutral-900 transition-colors font-medium text-sm lg:text-base">관람 안내 및 오시는 길</a>
             </div>
 
@@ -282,6 +301,12 @@ const App = () => {
               className={`block w-full text-left px-3 py-4 text-base font-medium rounded-md ${view === 'archive' ? 'text-neutral-900 bg-neutral-50' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
             >
               전시 목록
+            </button>
+            <button 
+              onClick={() => { setIsSpaceModalOpen(true); setIsMenuOpen(false); }} 
+              className="block w-full text-left px-3 py-4 text-base font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-md"
+            >
+              전시실 내부
             </button>
             <a 
               href="#visit" 
@@ -490,6 +515,90 @@ const App = () => {
         </div>
       )}
 
+      {/* Space Detail Modal */}
+      {isSpaceModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+          <div className="absolute inset-0 bg-neutral-900/90 backdrop-blur-md" onClick={() => setIsSpaceModalOpen(false)}></div>
+          <div className="relative bg-white w-full max-w-5xl h-[95vh] md:h-[90vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col md:flex-row animate-in fade-in zoom-in duration-300">
+            <button onClick={() => setIsSpaceModalOpen(false)} className="absolute top-6 right-6 z-20 p-2 bg-white/80 hover:bg-white rounded-full transition-colors shadow-sm">
+              <X size={24} />
+            </button>
+            
+            {/* Gallery Section */}
+            <div className="w-full md:w-2/5 bg-neutral-100 flex flex-col h-1/2 md:h-full">
+              <div className="relative flex-1 bg-neutral-200 group overflow-hidden p-4 flex items-center justify-center">
+                <img 
+                  key={currentSpaceImageIndex}
+                  src={spaceImages[currentSpaceImageIndex]} 
+                  alt={`전시실 내부 ${currentSpaceImageIndex + 1}`}
+                  className="w-full h-full object-contain transition-opacity duration-300"
+                />
+                
+                {/* Navigation Arrows */}
+                <button 
+                  onClick={handlePrevSpaceImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/90 hover:text-black rounded-full text-white backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 z-10"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button 
+                  onClick={handleNextSpaceImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/90 hover:text-black rounded-full text-white backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 z-10"
+                >
+                  <ChevronRight size={24} />
+                </button>
+
+                {/* Counter Label */}
+                <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 text-white text-[10px] font-bold rounded-full backdrop-blur-md">
+                  {currentSpaceImageIndex + 1} / {spaceImages.length}
+                </div>
+              </div>
+
+              {/* Thumbnail List */}
+              <div className="h-24 md:h-28 bg-white border-t border-neutral-100 p-3 overflow-x-auto">
+                <div className="flex gap-2 h-full">
+                  {spaceImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSpaceImageIndex(idx)}
+                      className={`relative flex-shrink-0 h-full aspect-square rounded-lg overflow-hidden transition-all border-2 ${
+                        currentSpaceImageIndex === idx ? 'border-red-500 scale-95' : 'border-transparent opacity-60'
+                      }`}
+                    >
+                      <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            {/* Content Section */}
+            <div className="w-full md:w-3/5 p-8 md:p-14 bg-white overflow-y-auto h-1/2 md:h-full flex flex-col justify-center">
+              <h3 className="text-3xl md:text-4xl font-black text-neutral-900 mb-8 leading-tight tracking-tighter">
+                전시실 내부
+              </h3>
+              
+              <div className="space-y-8 text-neutral-600">
+                <p className="whitespace-pre-line leading-relaxed text-base md:text-lg border-l-2 border-neutral-100 pl-6 italic">
+                  전주현대미술관의 전시 공간입니다.
+                </p>
+                
+                <div className="pt-8 grid grid-cols-1 gap-5 text-sm md:text-base border-t border-neutral-100">
+                  <div className="flex items-start">
+                    <span className="w-24 shrink-0 font-bold text-neutral-900 flex items-center uppercase text-[11px] tracking-widest"><MapPin size={14} className="mr-2" /> Space</span>
+                    <span className="text-neutral-500 font-medium">제1전시실, 제2전시실</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-12">
+                <button onClick={() => setIsSpaceModalOpen(false)} className="w-full py-4 bg-neutral-900 text-white font-bold rounded-xl hover:bg-neutral-800 transition-all shadow-lg active:scale-95">확인</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Visit Info Section */}
       {view === 'home' && (
         <section id="visit" className="py-12 md:py-24 bg-neutral-900 text-white">
@@ -510,6 +619,11 @@ const App = () => {
                   <div>
                     <h4 className="text-lg md:text-xl font-bold mb-1 md:mb-3 text-white">오시는 길</h4>
                     <p>전북특별자치도 전주시 완산구 풍남문2길 98-1</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg md:text-xl font-bold mb-1 md:mb-3 text-white">문의</h4>
+                    <p>063-284-0777</p>
+                    <p>jemamuseum@naver.com</p>
                   </div>
                 </div>
               </div>
