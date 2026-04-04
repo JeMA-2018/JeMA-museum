@@ -297,9 +297,9 @@ const App = () => {
       {view === 'home' ? (
         <>
           {/* Hero Section */}
-          <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+          <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 lg:pt-48 lg:pb-16 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
-              <p className="text-xs md:text-base text-neutral-500 font-semibold tracking-wider uppercase mb-3 md:mb-6">Jeonju Museum of Contemporary Art</p>
+              <p className="mt-6 md:mt-10 text-xs md:text-base text-neutral-500 font-semibold tracking-wider uppercase mb-3 md:mb-6">Jeonju Museum of Contemporary Art</p>
               <h2 className="text-neutral-900 leading-[1.2] md:leading-[1.1] mb-6 md:mb-8">
                 <div className="text-xl sm:text-2xl md:text-5xl font-black mb-1 md:mb-3 tracking-tighter uppercase text-neutral-800">Delight, Imagine, Creative, Share</div>
                 <div className="text-lg sm:text-xl md:text-4xl font-bold mb-1 md:mb-2">즐거운, 상상하는, 창조하는, 공유하는</div>
@@ -316,7 +316,7 @@ const App = () => {
           </section>
 
           {/* Featured Exhibitions Section */}
-          <section id="exhibitions" className="py-12 md:py-24 bg-white">
+          <section id="exhibitions" className="pt-8 pb-12 md:pt-12 md:pb-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-end justify-between mb-8 md:mb-16">
                 <div>
