@@ -233,6 +233,15 @@ const App = () => {
     }
   };
 
+  const scrollToVisit = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('visit');
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   const posterAspectClass = "aspect-[1/1.414]";
 
   return (
@@ -288,28 +297,31 @@ const App = () => {
       {view === 'home' ? (
         <>
           {/* Hero Section */}
-          <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+          <section className="relative pt-20 pb-12 md:pt-32 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
-              <p className="text-sm md:text-base text-neutral-500 font-semibold tracking-wider uppercase mb-6">Jeonju Museum of Contemporary Art</p>
-              <h2 className="text-neutral-900 leading-[1.1] mb-8">
-                <div className="text-3xl md:text-5xl font-black mb-3 tracking-tighter uppercase text-neutral-800">Delight, Imagine, Creative, Share</div>
-                <div className="text-2xl md:text-4xl font-bold mb-2">즐거운, 상상하는, 창조하는, 공유하는</div>
-                <div className="text-2xl md:text-4xl font-bold">전주의 현대 공간.</div>
+              <p className="text-xs md:text-base text-neutral-500 font-semibold tracking-wider uppercase mb-3 md:mb-6">Jeonju Museum of Contemporary Art</p>
+              <h2 className="text-neutral-900 leading-[1.2] md:leading-[1.1] mb-6 md:mb-8">
+                <div className="text-xl sm:text-2xl md:text-5xl font-black mb-1 md:mb-3 tracking-tighter uppercase text-neutral-800">Delight, Imagine, Creative, Share</div>
+                <div className="text-lg sm:text-xl md:text-4xl font-bold mb-1 md:mb-2">즐거운, 상상하는, 창조하는, 공유하는</div>
+                <div className="text-lg sm:text-xl md:text-4xl font-bold">전주의 현대 공간.</div>
               </h2>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <button onClick={openCurrentExhibition} className="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-neutral-900 hover:bg-neutral-800 transition-all shadow-xl">현재 전시 보기</button>
-                <button onClick={navigateToArchive} className="inline-flex justify-center items-center px-8 py-4 border border-neutral-300 text-base font-medium rounded-full text-neutral-700 bg-white hover:bg-neutral-50 transition-colors">전시 목록</button>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
+                <button onClick={openCurrentExhibition} className="inline-flex justify-center items-center px-6 py-3 md:px-8 md:py-4 border border-transparent text-sm md:text-base font-bold rounded-full text-white bg-neutral-900 hover:bg-neutral-800 transition-all shadow-xl">현재 전시 보기</button>
+                {/* Desktop: 전시 목록 */}
+                <button onClick={navigateToArchive} className="hidden md:inline-flex justify-center items-center px-6 py-3 md:px-8 md:py-4 border border-neutral-300 text-sm md:text-base font-medium rounded-full text-neutral-700 bg-white hover:bg-neutral-50 transition-colors">전시 목록</button>
+                {/* Mobile: 관람 안내 */}
+                <button onClick={scrollToVisit} className="inline-flex md:hidden justify-center items-center px-6 py-3 border border-neutral-300 text-sm font-medium rounded-full text-neutral-700 bg-white hover:bg-neutral-50 transition-colors">관람 안내</button>
               </div>
             </div>
           </section>
 
           {/* Featured Exhibitions Section */}
-          <section id="exhibitions" className="py-24 bg-white">
+          <section id="exhibitions" className="py-12 md:py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-end justify-between mb-16">
+              <div className="flex items-end justify-between mb-8 md:mb-16">
                 <div>
-                  <h3 className="text-4xl font-black text-neutral-900 mb-4 uppercase tracking-tighter">전시 목록</h3>
-                  <p className="text-neutral-500 text-lg">전주현대미술관의 발자취를 경험하세요</p>
+                  <h3 className="text-2xl md:text-4xl font-black text-neutral-900 mb-2 md:mb-4 uppercase tracking-tighter">전시 목록</h3>
+                  <p className="text-neutral-500 text-sm md:text-lg">전주현대미술관의 발자취를 경험하세요</p>
                 </div>
                 {/* 우측 전체 보기 버튼 추가 */}
                 <button 
@@ -320,20 +332,20 @@ const App = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14">
+              <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-14">
                 {exhibitions.slice(0, 3).map((exhibition) => (
                   <div key={exhibition.id} className="group cursor-pointer flex flex-col" onClick={() => setSelectedExhibition(exhibition)}>
-                    <div className={`relative ${posterAspectClass} overflow-hidden bg-neutral-100 mb-6 rounded-2xl shadow-sm group-hover:shadow-2xl transition-all duration-500`}>
+                    <div className={`relative ${posterAspectClass} overflow-hidden bg-neutral-100 mb-2 md:mb-6 rounded-lg md:rounded-2xl shadow-sm group-hover:shadow-2xl transition-all duration-500`}>
                       <img src={exhibition.images[0]} alt={exhibition.title} className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-1000 ease-out" />
-                      <div className="absolute top-5 left-5">
-                        <span className={`px-4 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-full backdrop-blur-md shadow-sm ${exhibition.statusKey === 'upcoming' ? 'bg-black text-white' : exhibition.statusKey === 'current' ? 'bg-blue-600 text-white' : 'bg-white/90 text-neutral-900'}`}>
+                      <div className="absolute top-2 left-2 md:top-5 md:left-5">
+                        <span className={`px-2 py-1 md:px-4 md:py-1.5 text-[8px] md:text-[10px] font-black uppercase tracking-widest rounded-full backdrop-blur-md shadow-sm ${exhibition.statusKey === 'upcoming' ? 'bg-black text-white' : exhibition.statusKey === 'current' ? 'bg-blue-600 text-white' : 'bg-white/90 text-neutral-900'}`}>
                           {exhibition.status}
                         </span>
                       </div>
                     </div>
-                    <h4 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-neutral-600 transition-colors leading-tight whitespace-pre-line">{exhibition.title}</h4>
-                    <div className="flex items-center text-neutral-500 font-medium">
-                      <Calendar size={16} className="mr-2" /> {exhibition.period}
+                    <h4 className="text-xs sm:text-sm md:text-2xl font-bold text-neutral-900 mb-1 md:mb-3 group-hover:text-neutral-600 transition-colors leading-tight whitespace-pre-line">{exhibition.title}</h4>
+                    <div className="flex items-center text-neutral-500 font-medium text-[10px] sm:text-xs md:text-base">
+                      <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" /> {exhibition.period}
                     </div>
                   </div>
                 ))}
@@ -353,22 +365,22 @@ const App = () => {
         </>
       ) : (
         /* Archive View */
-        <section className="pt-32 pb-24 bg-white min-h-screen">
+        <section className="pt-24 md:pt-32 pb-12 md:pb-24 bg-white min-h-screen">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button onClick={navigateToHome} className="flex items-center text-neutral-400 hover:text-neutral-900 mb-12 transition-colors font-medium">
-              <ArrowLeft size={20} className="mr-2" /> 홈으로 돌아가기
+            <button onClick={navigateToHome} className="flex items-center text-neutral-400 hover:text-neutral-900 mb-8 md:mb-12 transition-colors font-medium text-sm md:text-base">
+              <ArrowLeft size={20} className="mr-2 w-4 h-4 md:w-5 md:h-5" /> 홈으로 돌아가기
             </button>
-            <div className="mb-20">
-              <h2 className="text-3xl md:text-5xl font-black text-neutral-900 mb-6 tracking-tighter uppercase">전시 목록</h2>
+            <div className="mb-8 md:mb-20">
+              <h2 className="text-2xl md:text-5xl font-black text-neutral-900 mb-2 md:mb-6 tracking-tighter uppercase">전시 목록</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+            <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-8 md:gap-x-8 md:gap-y-16">
               {exhibitions.map((exhibition) => (
                 <div key={exhibition.id} className="group cursor-pointer" onClick={() => setSelectedExhibition(exhibition)}>
-                  <div className={`relative ${posterAspectClass} overflow-hidden bg-neutral-100 mb-6 rounded-xl shadow-sm`}>
+                  <div className={`relative ${posterAspectClass} overflow-hidden bg-neutral-100 mb-2 md:mb-6 rounded-lg md:rounded-xl shadow-sm`}>
                     <img src={exhibition.images[0]} alt={exhibition.title} className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700" />
                   </div>
-                  <h4 className="text-lg font-bold text-neutral-900 mb-2 line-clamp-2 leading-snug whitespace-pre-line">{exhibition.title}</h4>
-                  <p className="text-xs text-neutral-400 font-medium">{exhibition.period}</p>
+                  <h4 className="text-xs sm:text-sm md:text-lg font-bold text-neutral-900 mb-1 md:mb-2 line-clamp-2 leading-snug whitespace-pre-line">{exhibition.title}</h4>
+                  <p className="text-[10px] md:text-xs text-neutral-400 font-medium">{exhibition.period}</p>
                 </div>
               ))}
             </div>
@@ -480,28 +492,28 @@ const App = () => {
 
       {/* Visit Info Section */}
       {view === 'home' && (
-        <section id="visit" className="py-24 bg-neutral-900 text-white">
+        <section id="visit" className="py-12 md:py-24 bg-neutral-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-start">
               <div>
-                <h3 className="text-4xl font-black mb-12 uppercase tracking-tighter">Information</h3>
-                <div className="space-y-12 text-neutral-400">
+                <h3 className="text-2xl md:text-4xl font-black mb-6 md:mb-12 uppercase tracking-tighter">Information</h3>
+                <div className="space-y-6 md:space-y-12 text-neutral-400 text-sm md:text-base">
                   <div>
-                    <h4 className="text-xl font-bold mb-3 text-white">관람 시간</h4>
+                    <h4 className="text-lg md:text-xl font-bold mb-1 md:mb-3 text-white">관람 시간</h4>
                     <p>화요일 - 일요일 11:00 ~ 17:30</p>
-                    <p className="text-neutral-600 mt-2">매주 월요일 휴관</p>
+                    <p className="text-neutral-600 mt-1 md:mt-2">매주 월요일 휴관</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-3 text-white">관람료</h4>
+                    <h4 className="text-lg md:text-xl font-bold mb-1 md:mb-3 text-white">관람료</h4>
                     <p>성인: 5,000원 / 초,중,고: 3,000원 / 아동: 무료</p>
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-3 text-white">오시는 길</h4>
+                    <h4 className="text-lg md:text-xl font-bold mb-1 md:mb-3 text-white">오시는 길</h4>
                     <p>전북특별자치도 전주시 완산구 풍남문2길 98-1</p>
                   </div>
                 </div>
               </div>
-              <div className="bg-neutral-800 rounded-[2.5rem] overflow-hidden aspect-square border border-neutral-700 shadow-2xl">
+              <div className="bg-neutral-800 rounded-2xl md:rounded-[2.5rem] overflow-hidden aspect-square border border-neutral-700 shadow-2xl">
                   <iframe 
                     title="전주현대미술관 지도"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3235.442483753946!2d127.1442212!3d35.8136179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35702591fd883e1f%3A0x5ab710535c6755a7!2z7KCE7KO87ZiE64yA66-47Iig6rSA!5e0!3m2!1sko!2skr!4v1774419367733!5m2!1sko!2skr" 
