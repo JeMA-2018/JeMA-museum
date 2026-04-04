@@ -9,10 +9,11 @@ const App = () => {
   const [isSpaceModalOpen, setIsSpaceModalOpen] = useState(false);
   const [currentSpaceImageIndex, setCurrentSpaceImageIndex] = useState(0);
 
+  // 전시장 내부 이미지
   const spaceImages = [
-    "https://picsum.photos/seed/jema1/800/600",
-    "https://picsum.photos/seed/jema2/800/600",
-    "https://picsum.photos/seed/jema3/800/600",
+    "https://i.postimg.cc/kXCHr9nH/inside1.jpg",
+    "https://i.postimg.cc/vHvNbjTx/inside2.jpg",
+    "https://i.postimg.cc/dVtS1BZt/inside3.jpg",
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
