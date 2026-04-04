@@ -13,18 +13,18 @@ const App = () => {
   const exhibitions = [
     {
       id: 1,
-      title: "예정 전시",
-      period: "-",
+      title: "한글이 숨 쉬다Ⅱ",
+      period: "2026. 05. 01 - 05. 29",
       status: "예정 전시",
       statusKey: "upcoming",
       year: 2026,
       images: [
-        "https://i.postimg.cc/SRVyJbzS/image-ecb64243-94ee-4ba7-b121-fcba6f43630b.png"
+        "https://i.postimg.cc/DyqyWKmc/Kakao-Talk-20260404-152345140.png"
       ],
-      description: "문의 바랍니다.",
-      location: "-",
+      description: "작년도에 첫 번째로 시작한 한글이 숨 쉬다 -폰트아트모색전- 이 한글 서예의 아름다움과 장르간의 융합을 통한 조형적 아름다움을 모색하며 주목을 받은 바 있습니다. 금년에도 그 전시의 의미를 좀 더 넓게 하고자 전시회를 엽니다.",
+      location: "제1전시실",
       genre: "-",
-      artists: "-"
+      artists: "김춘선, 송하진, 이동근, 이성재, 이적요, 이희춘, 조병철, 차유림, 최동명"
     },
     {
       id: 2,
@@ -111,7 +111,7 @@ const App = () => {
     },
     {
       id: 7,
-      title: "한글이 숨쉬다",
+      title: "한글이 숨 쉬다",
       period: "2025. 06. 25 - 7. 13",
       status: "지난 전시",
       statusKey: "past",
