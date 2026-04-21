@@ -28,12 +28,12 @@ const App = () => {
       statusKey: "upcoming",
       year: 2026,
       images: [
-        "https://i.postimg.cc/ydQr0Sqs/fontart.png"
+        "https://i.postimg.cc/pV1pF7DB/fontart.png"
       ],
       description: "작년도에 첫 번째로 시작한 한글이 숨 쉬다 -폰트아트모색전- 이 한글 서예의 아름다움과 장르간의 융합을 통한 조형적 아름다움을 모색하며 주목을 받은 바 있습니다. 금년에도 그 전시의 의미를 좀 더 넓게 하고자 전시회를 엽니다.",
       location: "제1전시실",
       genre: "-",
-      artists: "김춘선, 송하진, 이동근, 이성재, 이적요, 이희춘, 조병철, 차유림, 최동명"
+      artists: "김춘선, 박인선, 송하진, 이동근, 이성재, 이적요, 이희춘, 조병철, 차유림, 최동명"
     },
     {
       id: 2,
@@ -97,6 +97,7 @@ const App = () => {
       year: 2025,
       images: [
         "https://i.postimg.cc/3WMB6NBC/jeong-eumjeon.jpg",
+        "https://i.postimg.cc/V6VDJQMX/jeong-eumjeon.jpg"
       ],
       description: "“청년의 목소리, 서예로 피어나다“\n세종대왕이 한글 창제를 통해 백성을 위한 소통의 시대를 열었던 것처럼, 오늘을 살아가는 청년들이 ’한글서예‘를 통해 다양한 표현 방법으로 시대 소리를 담아내는 전시",
       location: "-",
