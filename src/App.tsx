@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+설import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Calendar, ChevronRight, Menu, X, Instagram, User, Tag, ArrowLeft, ChevronLeft, Plus } from 'lucide-react';
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
       id: 1,
       title: "한글이 숨 쉬다Ⅱ",
       period: "2026. 05. 01 - 05. 29",
-      status: "예정 전시",
+      status: "현재 전시",
       statusKey: "upcoming",
       year: 2026,
       images: [
@@ -39,7 +39,7 @@ const App = () => {
       id: 2,
       title: "2026 JeMA 상설전시",
       period: "2026. 02. 02 - 06. 30",
-      status: "현재 전시",
+      status: "상설 전시",
       statusKey: "current",
       year: 2026,
       images: [
