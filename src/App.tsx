@@ -1,4 +1,4 @@
-설import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Clock, Calendar, ChevronRight, Menu, X, Instagram, User, Tag, ArrowLeft, ChevronLeft, Plus } from 'lucide-react';
 
 const App = () => {
