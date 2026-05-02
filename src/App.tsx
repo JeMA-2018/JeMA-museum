@@ -25,7 +25,7 @@ const App = () => {
       title: "한글이 숨 쉬다Ⅱ",
       period: "2026. 05. 01 - 05. 29",
       status: "현재 전시",
-      statusKey: "upcoming",
+      statusKey: "current",
       year: 2026,
       images: [
         "https://i.postimg.cc/pV1pF7DB/fontart.png"
