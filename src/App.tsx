@@ -335,7 +335,12 @@ const App = () => {
       {view === 'home' ? (
         <>
           {/* Hero Section */}
-          <section className="relative pt-20 pb-8 md:pt-32 md:pb-12 lg:pt-48 lg:pb-16 overflow-hidden">
+          <section 
+            className="relative pt-20 pb-8 md:pt-32 md:pb-12 lg:pt-48 lg:pb-16 overflow-hidden bg-cover bg-center bg-no-repeat"
+            style={{ 
+              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5)), url('/hero-bg.jpg')` 
+            }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
               <p className="mt-6 md:mt-10 text-xs md:text-base text-neutral-500 font-semibold tracking-wider uppercase mb-3 md:mb-6">Jeonju Museum of Contemporary Art</p>
               <h2 className="text-neutral-900 leading-[1.2] md:leading-[1.1] mb-6 md:mb-8">
