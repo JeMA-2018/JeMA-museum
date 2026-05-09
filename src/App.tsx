@@ -13,7 +13,7 @@ const App = () => {
   const spaceImages = [
     "https://i.postimg.cc/kXCHr9nH/inside1.jpg",
     "https://i.postimg.cc/vHvNbjTx/inside2.jpg",
-    "https://i.postimg.cc/dVtS1BZt/inside3.jpg",
+    "https://i.postimg.cc/dVtS1BZt/inside3.jpg"
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -28,7 +28,13 @@ const App = () => {
       statusKey: "current",
       year: 2026,
       images: [
-        "https://i.postimg.cc/pV1pF7DB/fontart.png"
+        "https://i.postimg.cc/pV1pF7DB/fontart.png",
+        "https://i.postimg.cc/VvyPW1Wr/1778293864742.jpg",
+        "https://i.postimg.cc/0jg10x0Y/1778293868528.jpg",
+        "https://i.postimg.cc/WzRcwjwm/1778293871729.jpg",
+        "https://i.postimg.cc/zvmYF5Fj/1778293871837.jpg",
+        "https://i.postimg.cc/d3Mcjvj9/1778293871886.jpg",
+        "https://i.postimg.cc/PJGnQhQF/1778293871959.jpg"
       ],
       videos: [
         "https://www.youtube.com/embed/Ymr4NcWUtH8"
