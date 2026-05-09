@@ -30,6 +30,9 @@ const App = () => {
       images: [
         "https://i.postimg.cc/pV1pF7DB/fontart.png"
       ],
+      videos: [
+        "public/Fontart2.mp4"
+      ],
       description: "작년도에 첫 번째로 시작한 한글이 숨 쉬다 -폰트아트모색전- 이 한글 서예의 아름다움과 장르간의 융합을 통한 조형적 아름다움을 모색하며 주목을 받은 바 있습니다. 금년에도 그 전시의 의미를 좀 더 넓게 하고자 전시회를 엽니다.",
       location: "제1전시실",
       genre: "-",
@@ -194,13 +197,15 @@ const App = () => {
   const handleNextImage = (e) => {
     e.stopPropagation();
     if (!selectedExhibition) return;
-    setCurrentImageIndex((prev) => (prev + 1) % selectedExhibition.images.length);
+    const allMediaLength = (selectedExhibition.videos?.length || 0) + (selectedExhibition.images?.length || 0);
+    setCurrentImageIndex((prev) => (prev + 1) % allMediaLength);
   };
 
   const handlePrevImage = (e) => {
     e.stopPropagation();
     if (!selectedExhibition) return;
-    setCurrentImageIndex((prev) => (prev - 1 + selectedExhibition.images.length) % selectedExhibition.images.length);
+    const allMediaLength = (selectedExhibition.videos?.length || 0) + (selectedExhibition.images?.length || 0);
+    setCurrentImageIndex((prev) => (prev - 1 + allMediaLength) % allMediaLength);
   };
 
   const handleNextSpaceImage = (e) => {
@@ -427,12 +432,33 @@ const App = () => {
             {/* Gallery Section - Fixed Height container for images */}
             <div className="w-full md:w-2/5 bg-neutral-100 flex flex-col h-1/2 md:h-full">
               <div className="relative flex-1 bg-neutral-200 group overflow-hidden p-4 flex items-center justify-center">
-                <img 
-                  key={currentImageIndex}
-                  src={selectedExhibition.images[currentImageIndex]} 
-                  alt={`${selectedExhibition.title} ${currentImageIndex + 1}`}
-                  className="w-full h-full object-contain transition-opacity duration-300"
-                />
+                {(() => {
+                  const allMedia = [
+                    ...(selectedExhibition.videos || []).map(url => ({ type: 'video', url })),
+                    ...(selectedExhibition.images || []).map(url => ({ type: 'image', url }))
+                  ];
+                  const currentMedia = allMedia[currentImageIndex];
+                  
+                  if (!currentMedia) return null;
+
+                  return currentMedia.type === 'video' ? (
+                    <video 
+                      key={currentImageIndex}
+                      src={currentMedia.url}
+                      controls
+                      autoPlay
+                      muted
+                      className="w-full h-full object-contain transition-opacity duration-300"
+                    />
+                  ) : (
+                    <img 
+                      key={currentImageIndex}
+                      src={currentMedia.url} 
+                      alt={`${selectedExhibition.title} ${currentImageIndex + 1}`}
+                      className="w-full h-full object-contain transition-opacity duration-300"
+                    />
+                  );
+                })()}
                 
                 {/* Navigation Arrows */}
                 <button 
@@ -450,22 +476,36 @@ const App = () => {
 
                 {/* Counter Label */}
                 <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 text-white text-[10px] font-bold rounded-full backdrop-blur-md">
-                  {currentImageIndex + 1} / {selectedExhibition.images.length}
+                  {currentImageIndex + 1} / {(selectedExhibition.videos?.length || 0) + (selectedExhibition.images?.length || 0)}
                 </div>
               </div>
 
               {/* Thumbnail List */}
               <div className="h-24 md:h-28 bg-white border-t border-neutral-100 p-3 overflow-x-auto">
                 <div className="flex gap-2 h-full">
-                  {selectedExhibition.images.map((img, idx) => (
+                  {[
+                    ...(selectedExhibition.videos || []).map(url => ({ type: 'video', url })),
+                    ...(selectedExhibition.images || []).map(url => ({ type: 'image', url }))
+                  ].map((media, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentImageIndex(idx)}
-                      className={`relative flex-shrink-0 h-full aspect-square rounded-lg overflow-hidden transition-all border-2 ${
+                      className={`relative flex-shrink-0 h-full aspect-square rounded-lg overflow-hidden transition-all border-2 flex items-center justify-center bg-black ${
                         currentImageIndex === idx ? 'border-red-500 scale-95' : 'border-transparent opacity-60'
                       }`}
                     >
-                      <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
+                      {media.type === 'video' ? (
+                         <div className="w-full h-full bg-black flex items-center justify-center relative">
+                           <video src={media.url} className="w-full h-full object-cover opacity-50" />
+                           <div className="absolute inset-0 flex items-center justify-center">
+                             <div className="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm">
+                               <div className="w-0 h-0 border-t-4 border-t-transparent border-l-[6px] border-l-white border-b-4 border-b-transparent ml-0.5"></div>
+                             </div>
+                           </div>
+                         </div>
+                      ) : (
+                        <img src={media.url} alt="thumbnail" className="w-full h-full object-cover" />
+                      )}
                     </button>
                   ))}
                 </div>
