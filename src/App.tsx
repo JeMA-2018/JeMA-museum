@@ -31,7 +31,7 @@ const App = () => {
         "https://i.postimg.cc/pV1pF7DB/fontart.png"
       ],
       videos: [
-        "/Fontart2.mp4"
+        "https://www.youtube.com/embed/Ymr4NcWUtH8"
       ],
       description: "작년도에 첫 번째로 시작한 한글이 숨 쉬다 -폰트아트모색전- 이 한글 서예의 아름다움과 장르간의 융합을 통한 조형적 아름다움을 모색하며 주목을 받은 바 있습니다. 금년에도 그 전시의 의미를 좀 더 넓게 하고자 전시회를 엽니다.",
       location: "제1전시실",
@@ -442,14 +442,26 @@ const App = () => {
                   if (!currentMedia) return null;
 
                   return currentMedia.type === 'video' ? (
-                    <video 
-                      key={currentImageIndex}
-                      src={currentMedia.url}
-                      controls
-                      autoPlay
-                      muted
-                      className="w-full h-full object-contain transition-opacity duration-300"
-                    />
+                    currentMedia.url.includes("youtube.com") || currentMedia.url.includes("youtu.be") ? (
+                      <iframe 
+                        key={currentImageIndex}
+                        className="w-full h-full object-contain"
+                        src={currentMedia.url} 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowFullScreen
+                      ></iframe>
+                    ) : (
+                      <video 
+                        key={currentImageIndex}
+                        src={currentMedia.url}
+                        controls
+                        autoPlay
+                        muted
+                        className="w-full h-full object-contain transition-opacity duration-300"
+                      />
+                    )
                   ) : (
                     <img 
                       key={currentImageIndex}
@@ -496,8 +508,17 @@ const App = () => {
                     >
                       {media.type === 'video' ? (
                          <div className="w-full h-full bg-black flex items-center justify-center relative">
-                           <video src={media.url} className="w-full h-full object-cover opacity-50" />
-                           <div className="absolute inset-0 flex items-center justify-center">
+                           {media.url.includes('youtube.com/embed/') && (
+                             <img 
+                               src={`https://img.youtube.com/vi/${media.url.split('/').pop()?.split('?')[0]}/0.jpg`} 
+                               className="w-full h-full object-cover opacity-50 absolute inset-0"
+                               alt="YouTube Thumbnail"
+                             />
+                           )}
+                           {!media.url.includes('youtube.com/embed/') && (
+                             <span className="text-white text-xs font-bold leading-none tracking-widest uppercase opacity-30 select-none relative z-10">Play</span>
+                           )}
+                           <div className="absolute inset-0 flex items-center justify-center z-10">
                              <div className="w-6 h-6 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm">
                                <div className="w-0 h-0 border-t-4 border-t-transparent border-l-[6px] border-l-white border-b-4 border-b-transparent ml-0.5"></div>
                              </div>
