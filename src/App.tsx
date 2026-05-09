@@ -31,7 +31,7 @@ const App = () => {
         "https://i.postimg.cc/pV1pF7DB/fontart.png"
       ],
       videos: [
-        "public/Fontart2.mp4"
+        "/Fontart2.mp4"
       ],
       description: "작년도에 첫 번째로 시작한 한글이 숨 쉬다 -폰트아트모색전- 이 한글 서예의 아름다움과 장르간의 융합을 통한 조형적 아름다움을 모색하며 주목을 받은 바 있습니다. 금년에도 그 전시의 의미를 좀 더 넓게 하고자 전시회를 엽니다.",
       location: "제1전시실",
