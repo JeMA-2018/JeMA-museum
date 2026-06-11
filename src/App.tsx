@@ -24,8 +24,8 @@ const App = () => {
       id: 1,
       title: "괴산의 그림쟁이",
       period: "2026. 06. 05 - 07. 12",
-      status: "예정 전시",
-      statusKey: "upcoming",
+      status: "현재 전시",
+      statusKey: "current",
       year: 2026,
       images: [
         "https://i.postimg.cc/mhWFh2PX/poster.jpg",
@@ -47,10 +47,50 @@ const App = () => {
     },
     {
       id: 2,
+      title: "2026 JeMA 상설전시",
+      period: "2026. 02. 02 - 06. 30",
+      status: "상설 전시",
+      statusKey: "current",
+      year: 2026,
+      images: [
+        "https://i.postimg.cc/Pqx0rM30/asddasd.png",
+        "https://i.postimg.cc/k5Y0BNs2/image02.png",
+        "https://i.postimg.cc/v8C65pDy/image.jpg",
+        "https://i.postimg.cc/j2PmgpbZ/image01.png"
+      ],
+      description: "“Art New Wave” 현대미술의 새물결",
+      location: "-",
+      genre: "미디어 아트, 설치미술",
+      artists: "김관수, 박성식, 박종갑, 박혜경, 이기홍, 이은경, 이적요, 정지은"
+    },
+    {
+      id: 3,
+      title: "인문학으로 전개하는 공간구성",
+      period: "2026. 05. 01 - 05. 31",
+      status: "체험 프로그램",
+      statusKey: "past",
+      year: 2026,
+      images: [
+        "https://i.postimg.cc/RVgWYR2F/poster.jpg",
+        "https://i.postimg.cc/5ysgRzwv/1.jpg",
+        "https://i.postimg.cc/D0x6MGqr/2.jpg",
+        "https://i.postimg.cc/cCFhb3QQ/3.jpg",
+        "https://i.postimg.cc/tJBkM6hd/4.jpg"
+      ],
+      videos: [
+        "https://www.youtube.com/embed/G0aTUdG0V8Q?si=-CKK1wqTp2foRq11"
+      ],
+      description: "체험형 프로그램입니다.",
+      location: "-",
+      genre: "체험 프로그램",
+      artists: "-"
+    },
+    {
+      id: 4,
       title: "한글이 숨 쉬다Ⅱ",
       period: "2026. 05. 01 - 05. 29",
-      status: "현재 전시",
-      statusKey: "current",
+      status: "지난 전시",
+      statusKey: "past",
       year: 2026,
       images: [
         "https://i.postimg.cc/pV1pF7DB/fontart.png",
@@ -70,25 +110,7 @@ const App = () => {
       artists: "김춘선, 박인선, 송하진, 이동근, 이성재, 이적요, 이희춘, 조병철, 차유림, 최동명"
     },
     {
-      id: 3,
-      title: "2026 JeMA 상설전시",
-      period: "2026. 02. 02 - 06. 30",
-      status: "상설 전시",
-      statusKey: "current",
-      year: 2026,
-      images: [
-        "https://i.postimg.cc/Pqx0rM30/asddasd.png",
-        "https://i.postimg.cc/k5Y0BNs2/image02.png",
-        "https://i.postimg.cc/v8C65pDy/image.jpg",
-        "https://i.postimg.cc/j2PmgpbZ/image01.png"
-      ],
-      description: "“Art New Wave” 현대미술의 새물결",
-      location: "-",
-      genre: "미디어 아트, 설치미술",
-      artists: "김관수, 박성식, 박종갑, 박혜경, 이기홍, 이은경, 이적요, 정지은"
-    },
-    {
-      id: 4,
+      id: 5,
       title: "재탄생의 시간",
       period: "2026. 01. 14 - 02. 08",
       status: "지난 전시",
@@ -106,7 +128,7 @@ const App = () => {
       artists: "고보연, 김덕신, 김행령, 한 숙, 이진화, 박인선"
     },
     {
-      id: 5,
+      id: 6,
       title: "다양성의 미학",
       period: "2025. 11. 06 - 11. 19",
       status: "지난 전시",
@@ -123,7 +145,7 @@ const App = () => {
       artists: "김동희, 김동주, 김두해, 김선태, 김시현, 김장혁, 김춘선, 김한창, 도병락, 문주호, 박은화, 박인희, 박진영, 선기현, 성태식, 신민경, 양규준, 조 헌, 조병철, 조민아, 조재천, 차유림, 채우승, 최승일, 텐진쬔뒤, 한은주, 홍선기"
     },
     {
-      id: 6,
+      id: 7,
       title: "정음(正音)",
       period: "2025. 09. 01 - 10. 26",
       status: "지난 전시",
@@ -139,7 +161,7 @@ const App = () => {
       artists: "구청미, 김용재, 김윤주, 박성호, 송이슬, 유명기, 윤성민, 윤정연, 이대근, 이문종, 이민성, 이보배, 이수진, 이신영, 이정화, 임지선, 장순영, 전정연,정준식, 조용연"
     },
     {
-      id: 7,
+      id: 8,
       title: "빛의 회복",
       period: "2025. 08. 13 - 08. 23",
       status: "지난 전시",
@@ -154,7 +176,7 @@ const App = () => {
       artists: "강종수, 김경희, 김영종, 김종도, 박인선, 배병희, 송규상, 양청문, 이동근, 이성재, 차유림"
     },
     {
-      id: 8,
+      id: 9,
       title: "한글이 숨 쉬다",
       period: "2025. 06. 25 - 7. 13",
       status: "지난 전시",
@@ -169,7 +191,7 @@ const App = () => {
       artists: "김춘선, 송하진, 이기전, 이동근, 이성재, 이일청, 장석원, 최동명 등 8인"
     },
     {
-      id: 9,
+      id: 10,
       title: "빛나는 상흔",
       period: "2025. 05. 01 - 5. 28",
       status: "지난 전시",
@@ -184,7 +206,7 @@ const App = () => {
       artists: "김미숙",
     },
     {
-      id: 10,
+      id: 11,
       title: "판각(版刻) 여정",
       period: "2025. 04. 05 - 4. 29",
       status: "지난 전시",
@@ -199,7 +221,7 @@ const App = () => {
       artists: "김준권",
     },
     {
-      id: 11,
+      id: 12,
       title: "만경(萬頃)_수묵여정(水墨旅程)",
       period: "2025. 01. 01 - 02. 10",
       status: "지난 전시",
