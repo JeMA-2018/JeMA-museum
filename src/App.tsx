@@ -22,28 +22,23 @@ const App = () => {
   const exhibitions = [
       {
       id: 1,
-      title: "괴산의 그림쟁이",
-      period: "2026. 06. 05 - 07. 12",
-      status: "현재 전시",
-      statusKey: "current",
+      title: "융합의 서곡 #-Ⅱ",
+      period: "2026. 08. 18 - 08. 30",
+      status: "예정 전시",
+      statusKey: "upcoming",
       year: 2026,
       images: [
-        "https://i.postimg.cc/mhWFh2PX/poster.jpg",
-        "https://i.postimg.cc/s1CZ1DMh/1.jpg",
-        "https://i.postimg.cc/NLvrLfKR/1-1.jpg",
-        "https://i.postimg.cc/fkQ0kTVc/1-2.jpg",
-        "https://i.postimg.cc/fkQ0kTVj/1-3.jpg",
-        "https://i.postimg.cc/CdpfdLRs/2-1.jpg",
-        "https://i.postimg.cc/5jWFjNXm/2-2.jpg",
-        "https://i.postimg.cc/jCYJCdDv/2-3.jpg"
+        "https://i.postimg.cc/Y0W7RrxH/poseuteo.jpg",
+        "https://i.postimg.cc/Y0W7Rrz5/1786703176743.jpg",
+        "https://i.postimg.cc/FzLvprxv/1786703176900.jpg"
       ],
       videos: [
-        "https://www.youtube.com/embed/bpyZoHwzaHo"
+        "https://www.youtube.com/embed/KIPxiqfnlOY"
       ],
-      description: "전주현대미술관은 문화체육관광부와 (재)예술경영지원센터, 지역전시활성화가 후원하는 ‘2026 지역전시 활성화 사업’에 공간으로선정되어 청주 쉐마미술관과 협력 전시를 진행합니다. 이번 사업은 지역 미술 생태계 활성화를 목적으로 하며, 쉐마미술관의 우수 전시 <괴산의 그림쟁이 : 황창배>콘텐츠를 전주현대미술관에 매칭되어 선보이는 전시입니다. 특히 이번 전시는 독자적 예술 ‘황창배 화풍’울 탄생시킨 천재화가 황창배 화백의 1990년부터 2000년 작가가 작고하기 전까지 충북 괴산 작업실에서 10년의 세월을 느낄 수 있는 성화작품과 자여 시리즈를 통해 그의 독창적 조형 세계와 예술적 정신을 공감할 수 있는 전시입니다.",
-      location: "미술관 전관",
+      description: "",
+      location: "-",
       genre: "-",
-      artists: "황창배"
+      artists: "김용수"
     },
     {
       id: 2,
@@ -65,6 +60,31 @@ const App = () => {
     },
     {
       id: 3,
+      title: "괴산의 그림쟁이",
+      period: "2026. 06. 05 - 07. 12",
+      status: "지난 전시",
+      statusKey: "past",
+      year: 2026,
+      images: [
+        "https://i.postimg.cc/mhWFh2PX/poster.jpg",
+        "https://i.postimg.cc/s1CZ1DMh/1.jpg",
+        "https://i.postimg.cc/NLvrLfKR/1-1.jpg",
+        "https://i.postimg.cc/fkQ0kTVc/1-2.jpg",
+        "https://i.postimg.cc/fkQ0kTVj/1-3.jpg",
+        "https://i.postimg.cc/CdpfdLRs/2-1.jpg",
+        "https://i.postimg.cc/5jWFjNXm/2-2.jpg",
+        "https://i.postimg.cc/jCYJCdDv/2-3.jpg"
+      ],
+      videos: [
+        "https://www.youtube.com/embed/bpyZoHwzaHo"
+      ],
+      description: "전주현대미술관은 문화체육관광부와 (재)예술경영지원센터, 지역전시활성화가 후원하는 ‘2026 지역전시 활성화 사업’에 공간으로선정되어 청주 쉐마미술관과 협력 전시를 진행합니다. 이번 사업은 지역 미술 생태계 활성화를 목적으로 하며, 쉐마미술관의 우수 전시 <괴산의 그림쟁이 : 황창배>콘텐츠를 전주현대미술관에 매칭되어 선보이는 전시입니다. 특히 이번 전시는 독자적 예술 ‘황창배 화풍’울 탄생시킨 천재화가 황창배 화백의 1990년부터 2000년 작가가 작고하기 전까지 충북 괴산 작업실에서 10년의 세월을 느낄 수 있는 성화작품과 자여 시리즈를 통해 그의 독창적 조형 세계와 예술적 정신을 공감할 수 있는 전시입니다.",
+      location: "미술관 전관",
+      genre: "-",
+      artists: "황창배"
+    },
+    {
+      id: 4,
       title: "인문학으로 전개하는 공간구성",
       period: "2026. 05. 01 - 05. 31",
       status: "체험 프로그램",
@@ -86,7 +106,7 @@ const App = () => {
       artists: "-"
     },
     {
-      id: 4,
+      id: 5,
       title: "한글이 숨 쉬다Ⅱ",
       period: "2026. 05. 01 - 05. 29",
       status: "지난 전시",
@@ -110,7 +130,7 @@ const App = () => {
       artists: "김춘선, 박인선, 송하진, 이동근, 이성재, 이적요, 이희춘, 조병철, 차유림, 최동명"
     },
     {
-      id: 5,
+      id: 6,
       title: "재탄생의 시간",
       period: "2026. 01. 14 - 02. 08",
       status: "지난 전시",
@@ -128,7 +148,7 @@ const App = () => {
       artists: "고보연, 김덕신, 김행령, 한 숙, 이진화, 박인선"
     },
     {
-      id: 6,
+      id: 7,
       title: "다양성의 미학",
       period: "2025. 11. 06 - 11. 19",
       status: "지난 전시",
@@ -145,7 +165,7 @@ const App = () => {
       artists: "김동희, 김동주, 김두해, 김선태, 김시현, 김장혁, 김춘선, 김한창, 도병락, 문주호, 박은화, 박인희, 박진영, 선기현, 성태식, 신민경, 양규준, 조 헌, 조병철, 조민아, 조재천, 차유림, 채우승, 최승일, 텐진쬔뒤, 한은주, 홍선기"
     },
     {
-      id: 7,
+      id: 8,
       title: "정음(正音)",
       period: "2025. 09. 01 - 10. 26",
       status: "지난 전시",
@@ -161,7 +181,7 @@ const App = () => {
       artists: "구청미, 김용재, 김윤주, 박성호, 송이슬, 유명기, 윤성민, 윤정연, 이대근, 이문종, 이민성, 이보배, 이수진, 이신영, 이정화, 임지선, 장순영, 전정연,정준식, 조용연"
     },
     {
-      id: 8,
+      id: 9,
       title: "빛의 회복",
       period: "2025. 08. 13 - 08. 23",
       status: "지난 전시",
@@ -176,7 +196,7 @@ const App = () => {
       artists: "강종수, 김경희, 김영종, 김종도, 박인선, 배병희, 송규상, 양청문, 이동근, 이성재, 차유림"
     },
     {
-      id: 9,
+      id: 10,
       title: "한글이 숨 쉬다",
       period: "2025. 06. 25 - 7. 13",
       status: "지난 전시",
@@ -191,7 +211,7 @@ const App = () => {
       artists: "김춘선, 송하진, 이기전, 이동근, 이성재, 이일청, 장석원, 최동명 등 8인"
     },
     {
-      id: 10,
+      id: 11,
       title: "빛나는 상흔",
       period: "2025. 05. 01 - 5. 28",
       status: "지난 전시",
@@ -206,7 +226,7 @@ const App = () => {
       artists: "김미숙",
     },
     {
-      id: 11,
+      id: 12,
       title: "판각(版刻) 여정",
       period: "2025. 04. 05 - 4. 29",
       status: "지난 전시",
@@ -221,7 +241,7 @@ const App = () => {
       artists: "김준권",
     },
     {
-      id: 12,
+      id: 13,
       title: "만경(萬頃)_수묵여정(水墨旅程)",
       period: "2025. 01. 01 - 02. 10",
       status: "지난 전시",
